@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\HomeController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,18 @@ Use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+
+
 Auth::routes();
+
+Route::group(['middleware'=>['auth']],function(){
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+});
+
+
