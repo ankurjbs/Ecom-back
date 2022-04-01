@@ -14,4 +14,8 @@ class AdminController extends Controller
     public function index(){
         return view('Admin.dashboard');
     }
+
+    public function productNew(){
+        return view('Admin.Product.new');
+    }
 }

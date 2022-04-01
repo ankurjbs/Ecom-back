@@ -24,11 +24,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
-
 Auth::routes();
 
 Route::group(['middleware'=>['auth']],function(){
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+    // product add
+    Route::get('/addProduct', [AdminController::class, 'productNew'])->name('addProduct');
 });
 
 
